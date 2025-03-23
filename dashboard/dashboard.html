@@ -7,7 +7,7 @@
      <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-   <h1>Welcome Angrybird !</h1>
+   <h1>Welcome user</h1>
    <div class="profile"></div>
 <div class="input">
     <button class="value">
@@ -25,9 +25,15 @@
     <button class="value">
         Recent Activity
     </button>
-    <button class="value">
+    <button class="value settings">
         Settings
+        
     </button>
-  </div>
+</div>
+<script>
+document.querySelector('.settings').addEventListener('click', function() {
+                    window.location.href = "../settings\settings .html";
+                });
+</script>
 </body>
 </html>
