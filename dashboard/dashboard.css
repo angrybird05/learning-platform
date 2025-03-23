@@ -91,3 +91,10 @@ h1{
     text-decoration: none;
     color: black;
 }
+li{
+  display: inline;
+  list-style-type: none;
+  background: none;
+  margin-bottom: 2rem;
+  
+}
