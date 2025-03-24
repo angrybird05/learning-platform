@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
      <link rel="stylesheet" href="dashboard.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-   <h1>Welcome user</h1>
-   <div class="profile"></div>
+    <h1>Welcome user</h1>
+    <div class="profile"></div>
+    <div class="setting" onclick="toggleInputDiv()"><i class="fa-solid fa-sliders"></i></div>
 <div class="input">
     <button class="value">
         Dashboard
@@ -30,5 +32,71 @@
     </button>
 </div>
 
+<div class="progress-container">
+    <div class="progress-item">
+        <div class="circular-progress">
+            <span class="progress-value">0%</span>
+        </div>
+        <h3>Overall Progress</h3>
+    </div>
+    
+    <div class="progress-item">
+        <div class="circular-progress-2">
+            <span class="progress-value-2">0%</span>
+        </div>
+        <h3>Course Progress</h3>
+    </div>
+</div>
+<script>
+    function toggleInputDiv() {
+        var inputDiv = document.querySelector('.input');
+        if (inputDiv.style.display === 'none' || inputDiv.style.display === '') {
+             inputDiv.style.display = 'flex';
+        } else {
+             inputDiv.style.display = 'none';
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('.input').style.display = 'none';
+    });
+
+    let circularProgress = document.querySelector(".circular-progress");
+    let progressValue = document.querySelector(".progress-value");
+
+    let progressStartValue = 0;
+    let progressEndValue = 75;    // Change this value to set your progress percentage
+    let speed = 20;
+
+    let progress = setInterval(() => {
+        progressStartValue++;
+        progressValue.textContent = `${progressStartValue}%`;
+        circularProgress.style.background = `conic-gradient(
+            #7d2ae8 ${progressStartValue * 3.6}deg,
+            #ededed ${progressStartValue * 3.6}deg
+        )`;
+        if (progressStartValue >= progressEndValue) {
+            clearInterval(progress);
+        }
+    }, speed);
+
+    let circularProgress2 = document.querySelector(".circular-progress-2");
+    let progressValue2 = document.querySelector(".progress-value-2");
+
+    let progressStartValue2 = 0;
+    let progressEndValue2 = 90;    // Different percentage for second progress bar
+    let speed2 = 20;
+
+    let progress2 = setInterval(() => {
+        progressStartValue2++;
+        progressValue2.textContent = `${progressStartValue2}%`;
+        circularProgress2.style.background = `conic-gradient(
+            #ff6b6b ${progressStartValue2 * 3.6}deg,
+            #ededed ${progressStartValue2 * 3.6}deg
+        )`;
+        if (progressStartValue2 >= progressEndValue2) {
+            clearInterval(progress2);
+        }
+    }, speed2);
+</script>
 </body>
 </html>
